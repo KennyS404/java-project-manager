@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.desbravador</groupId>
+	<groupId>com.kennildo</groupId>
 	<artifactId>kennildo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>desbravador</name>
+	<name>kennildo</name>
 	<description>Crud com Spring Boot e PostgreSQL</description>
 	<properties>
 		<java.version>11</java.version>
