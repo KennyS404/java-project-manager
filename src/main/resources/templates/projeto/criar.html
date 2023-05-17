@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Projeto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Criar Projeto</h1>
+
+    <form class="mt-4" th:action="@{/projeto/criar}" method="post" th:object="${projeto}">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input class="form-control" type="text" id="nome" name="nome" th:field="*{nome}"/>
+        </div>
+        <div class="form-group">
+            <label for="dataInicio">Data de Início:</label>
+            <input class="form-control" type="date" id="dataInicio" name="dataInicio" th:field="*{dataInicio}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="dataPrevisaoFim">Data de Previsão de Término:</label>
+            <input class="form-control" type="date" id="dataPrevisaoFim" name="dataPrevisaoFim" th:field="*{dataPrevisaoFim}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea class="form-control" id="descricao" name="descricao" th:field="*{descricao}"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="gerente">Gerente Responsável:</label>
+            <select class="form-control" id="gerente" name="gerente" th:field="*{gerente.id}">
+                <option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nome}"></option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="orcamento">Orçamento Total:</label>
+            <input class="form-control" type="number" id="orcamento" name="orcamento" th:field="*{orcamento}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="risco">Classificação de Risco:</label>
+            <select class="form-control" id="risco" name="risco" th:field="*{risco}">
+                <option value="baixo">Baixo</option>
+                <option value="médio">Médio</option>
+                <option value="alto">Alto</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

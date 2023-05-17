@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Projetos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Informações do Projeto</h1>
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Data de Início</th>
+            <th>Data de Previsão de Término</th>
+            <th>Gerente Responsável</th>
+            <th>Orçamento Total</</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="projeto : ${projetos}" th:object="${projeto}">
+            <td th:text="${projeto.id}"></td>
+            <td th:text="${projeto.nome}"></td>
+            <td th:text="${projeto.dataInicio}"></td>
+            <td th:text="${projeto.dataPrevisaoFim}"></td>
+            <td th:text="${projeto.gerente.nome}"></td>
+            <td th:text="${projeto.orcamento}"></td>
+            <td th:text="${projeto.status}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/projeto/editar/{id}(id=${projeto.id})}">Editar</a>
+                <a class="btn btn-danger" th:href="@{/projeto/excluir/{id}(id=${projeto.id})}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="/projeto/criar">Novo Projeto</a>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
